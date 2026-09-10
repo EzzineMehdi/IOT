@@ -1,0 +1,5 @@
+kube-proxy
+scheduler
+sudo iptables -t nat -L -n | grep app-one
+learn more about the yaml config file
+when adding ingress how can I know the ip address to which I should send the curl request
