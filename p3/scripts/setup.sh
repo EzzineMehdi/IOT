@@ -33,6 +33,9 @@ kubectl rollout status deployment argocd-server -n argocd --timeout=300s
 echo "==> Deploying the Argo CD Application (points at the GitOps repo)"
 kubectl apply -f "$(dirname "$0")/../confs/application.yaml"
 
+echo "==> Creating the service for argocd"
+kubectl apply -f "$(dirname "$0")/../confs/ingress.yaml"
+
 echo "==> Argo CD initial admin password:"
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 echo ""
